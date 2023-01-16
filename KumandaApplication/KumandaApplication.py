@@ -1,0 +1,109 @@
+# -*- coding: cp1254 -*-
+import random
+import time
+
+class Kumanda():
+    def __init__(self,tv_durumu="Kapalý",tv_ses=0,kanal_listesi=["TRT Spor","TRT 1","TRT Belgesel"],kanal="TRT"):
+        self.tv_durumu=tv_durumu
+        self.tv_ses=tv_ses
+        self.kanal_listesi=kanal_listesi
+        self.kanal=kanal
+
+    def tv_ac(self):
+        if self.tv_durumu=="Açýk":
+            print("Televizyon zaten açýk")
+        else:
+            print("Televizyon açýlýyor...")
+            time.sleep(1)
+            self.tv_durumu="Açýk" 
+
+    def tv_kapa(self):
+        if self.tv_durumu=="Kapalý":
+            print("Televizyon zaten kapalý")
+        else:
+            print("Televizyon kapanýyor...")
+            time.sleep(1)
+            self.tv_durumu="Kapalý"
+
+    def ses_ayarla(self):
+        while True:
+            print("Ses arttýrmak için '+' tuþuna basýnýz\nSes azaltmak için'-' tuþuna basýnýz\nÇýkýþ için '0' basýnýz")
+            ses=input("Seçiminiz: ")
+            if ses=="+":
+                if self.tv_ses<100:
+                    self.tv_ses+=5
+                    print("Televizyon ses seviyesi: {}".format(self.tv_ses))
+                elif self.tv_ses>=100:
+                    self.tv_ses=100
+                    print("Saðlýðýnýz için maksimum ses seviyesi '100' olarak ayarlandý...")
+            elif ses=="-":
+                if self.tv_ses<0:
+                    print("Ses 0'ýn altýna düþemez...")
+                else:
+                    self.tv_ses-=5
+                    print("Televizyon ses seviyesi: {}".format(self.tv_ses))
+            elif ses=="0":
+                break
+            else:
+                print("Geçersiz iþlem girildi...")
+    
+    def kanal_ekle(self,kanal_ismi):
+        print("Girilen kanal listeye ekleniyor...")
+        time.sleep(1)
+        self.kanal_listesi.append(kanal_ismi)
+        print("Kanal baþarýyla listeye eklendi...")
+    
+    def rastgele_kanal(self):
+        rastgele=random.randint(0,len(self.kanal_listesi)-1)
+        self.kanal=self.kanal_listesi[rastgele]
+        print("Açýk olan kanal: {}".format(self.kanal))
+    
+    def __len__(self):
+        return len(self.kanal_listesi)
+    
+    def __str__(self):
+        return "TV durum: {}\nSes seviyesi: {}\nAçýk olan kanal: {}".format(self.tv_durumu,self.tv_ses,self.kanal)
+
+
+
+print("""
+Televizyon Uygulamasý
+1-Televizyon Aç
+2-Televizyon Kapat
+3-Ses Ayarlarý
+4-Kanal Ekle
+5-Kanal Sayýsý Öðrenme
+6-Rastgele Kanal Deðiþtirme
+7-Televizyon Bilgileri
+0-Çýkýþ
+""")
+
+kumanda=Kumanda()
+while True:
+    secim=int(input("Ýþlem numarasýný giriniz: "))
+
+    if secim==1:
+        kumanda.tv_ac()
+    elif secim==2:
+        kumanda.tv_kapa()
+    elif secim==3:
+        kumanda.ses_ayarla()
+    elif secim==4:
+        kanal=input("Birden fazla kanal gireceksiniz ',(virgül)' ile ayýrýnýz...\nEklemek istediðiniz kanal ya da kanallarý giriniz: ")
+        kanalliste=kanal.split(",")
+        for x in kanalliste:
+            kumanda.kanal_ekle(x)
+    elif secim==5:
+        print("Televizyonda kayýtlý toplam kanal sayýsý: {}".format(len(kumanda)))
+    elif secim==6:
+        print("Rastgele kanal seçiliyor...")
+        time.sleep(1)
+        kumanda.rastgele_kanal()
+    elif secim==7:
+        print(kumanda)
+    elif secim==0:
+        print("Program sonlandýrýlýyor...")
+        time.sleep(1)
+        break
+    else:
+        print("Geçersiz iþlem numarasý girildi...")

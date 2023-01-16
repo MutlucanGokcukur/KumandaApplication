@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "KumandaApplication", "KumandaApplication\KumandaApplication.pyproj", "{F7FD2AD3-CF8A-46CC-9C10-8FC3E96297C5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F7FD2AD3-CF8A-46CC-9C10-8FC3E96297C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7FD2AD3-CF8A-46CC-9C10-8FC3E96297C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C70A3D39-B25D-45B0-A40A-642E394775A0}
+	EndGlobalSection
+EndGlobal
